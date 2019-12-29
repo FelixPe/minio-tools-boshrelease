@@ -558,48 +558,30 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(minio_http_requests_duration_seconds_sum{request_type=\"GET\",instance=~\"$instance\"}[5m])",
+          "expr": "rate(s3_ttfb_seconds_sum{api=\"getobject\",instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "GET",
-          "metric": "minio_http_requests_duration_seconds_count",
+          "legendFormat": "getobject",
+          "metric": "s3_ttfb_seconds_count",
           "refId": "A",
           "step": 4
         },
         {
-          "expr": "rate(minio_http_requests_duration_seconds_sum{request_type=\"POST\",instance=~\"$instance\"}[5m])",
+          "expr": "rate(s3_ttfb_seconds_sum{api=\"listobjectsv1\",instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "POST",
-          "metric": "minio_http_requests_duration_seconds_count",
+          "legendFormat": "listobjectsv1",
+          "metric": "s3_ttfb_seconds_count",
           "refId": "B",
           "step": 4
         },
         {
-          "expr": "rate(minio_http_requests_duration_seconds_sum{request_type=\"PUT\",instance=~\"$instance\"}[5m])",
+          "expr": "rate(s3_ttfb_seconds_sum{api=\"listobjectsv2\",instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "PUT",
-          "metric": "minio_http_requests_duration_seconds_count",
+          "metric": "s3_ttfb_seconds_count",
           "refId": "C",
-          "step": 4
-        },
-        {
-          "expr": "rate(minio_http_requests_duration_seconds_sum{request_type=\"HEAD\",instance=~\"$instance\"}[5m])",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "HEAD",
-          "metric": "minio_http_requests_duration_seconds_count",
-          "refId": "D",
-          "step": 4
-        },
-        {
-          "expr": "rate(minio_http_requests_duration_seconds_sum{request_type=\"DELETE\",instance=~\"$instance\"}[5m])",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "DELETE",
-          "metric": "minio_http_requests_duration_seconds_count",
-          "refId": "E",
           "step": 4
         }
       ],
