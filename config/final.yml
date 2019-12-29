@@ -1,5 +1,11 @@
-name: minio-tools
+---
+name: solr
+
 blobstore:
   provider: s3
+#  provider: local
   options:
-    bucket_name: orange-dfy-minio-tools-boshrelease
+    bucket_name: boshblobs
+    region: eu-west-1
+    host: storage.sero.network
+#    blobstore_path: /tmp/test-blobs
