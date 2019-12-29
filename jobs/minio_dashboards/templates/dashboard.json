@@ -287,11 +287,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(minio_network_sent_bytes_total{instance=~\"$instance\"}[5m])",
+          "expr": "rate(s3_tx_bytes_total{instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Transmited:",
-          "metric": "minio_network_sent_bytes_total",
+          "metric": "s3_tx_bytes_total",
           "refId": "A",
           "step": 10
         }
@@ -375,11 +375,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(minio_network_received_bytes_total{instance=~\"$instance\"}[5m])",
+          "expr": "rate(s3_rx_bytes_total{instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Received:",
-          "metric": "minio_network_received_bytes_total",
+          "metric": "s3_rx_bytes_total",
           "refId": "A",
           "step": 10
         }
@@ -463,16 +463,16 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(minio_network_received_bytes_total{instance=~\"$instance\"}[5m])",
+          "expr": "rate(s3_rx_bytes_total{instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Received: ",
-          "metric": "minio_network_received_bytes_total",
+          "metric": "s3_rx_bytes_total",
           "refId": "A",
           "step": 10
         },
         {
-          "expr": "rate(minio_network_sent_bytes_total{instance=~\"$instance\"}[5m])",
+          "expr": "rate(s3_tx_bytes_total{instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Transmited:",
@@ -680,14 +680,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(minio_total_disks{instance=~\"$instance\"}) by(instance)",
+          "expr": "sum(minio_disks_total{instance=~\"$instance\"}) by(instance)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Total disks",
           "refId": "A"
         },
         {
-          "expr": "sum(minio_offline_disks{instance=~\"$instance\"}) by(instance)",
+          "expr": "sum(minio_disks_offline{instance=~\"$instance\"}) by(instance)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Offline disks",
@@ -753,7 +753,7 @@
         "multi": false,
         "name": "instance",
         "options": [],
-        "query": "label_values(minio_total_disks,instance)",
+        "query": "label_values(minio_disks_total,instance)",
         "refresh": 1,
         "regex": "",
         "sort": 1,
