@@ -139,7 +139,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(minio_total_disks{instance=~\"$instance\"}) by(instance)",
+          "expr": "sum(minio_disks_total{instance=~\"$instance\"}) by(instance)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -229,7 +229,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(minio_offline_disks{instance=~\"$instance\"}) by(instance)/sum(minio_total_disks{instance=~\"$instance\"}) by(instance)*100",
+          "expr": "sum(minio_disks_offline{instance=~\"$instance\"}) by(instance)/sum(minio_disks_total{instance=~\"$instance\"}) by(instance)*100",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
