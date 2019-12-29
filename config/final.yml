@@ -1,5 +1,5 @@
 ---
-name: solr
+name: minio-tools
 
 blobstore:
   provider: s3
