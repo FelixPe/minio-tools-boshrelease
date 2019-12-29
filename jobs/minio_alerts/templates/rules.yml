@@ -2,7 +2,7 @@ groups:
 - name: minio-disk
   rules:
   - alert: MinioDiskOffline
-    expr: sum(minio_offline_disks) by(instance) != 0
+    expr: sum(minio_disks_offline) by(instance) != 0
     for: <%= p('minio_alerts.disk_offline.evaluation_time') %>
     labels:
       service: minio
@@ -11,7 +11,7 @@ groups:
       summary: "Disk(s) offline `{{$labels.instance}}`"
       description: "Disk(s) offline `{{$labels.instance}}`, {{$value}} disks offline"
   - alert: MinioDiskOfflineQuorum
-    expr: sum(minio_offline_disks) by(instance) >= sum(minio_total_disks) by(instance)/2
+    expr: sum(minio_disks_offline) by(instance) >= sum(minio_disks_total) by(instance)/2
     for: <%= p('minio_alerts.disk_offline_quorum.evaluation_time') %>
     labels:
       service: minio
@@ -21,7 +21,7 @@ groups:
       description: "Disk(s) offline break the quorum `{{$labels.instance}}` {{$value}} offlines"
   - alert: StorageSpaceExhausted
     for: <%= p('minio_alerts.storage_space_exhausted.evaluation_time') %>
-    expr: sum(minio_disk_storage_free_bytes) by(instance) < <%= p('minio_alerts.storage_space_exhausted.min_bytes') %>
+    expr: sum(disk_storage_available) by(instance) < <%= p('minio_alerts.storage_space_exhausted.min_bytes') %>
     labels:
       service: minio
       severity: critical
