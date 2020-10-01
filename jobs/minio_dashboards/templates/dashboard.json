@@ -1,46 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.2.4"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "text",
-      "name": "Text",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -58,13 +16,19 @@
   "editable": true,
   "gnetId": 6248,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1542818841793,
+  "iteration": 1601556648269,
   "links": [],
   "panels": [
     {
       "content": "<img src=\"https://www.dropbox.com/s/s5z6rn7offp7ov3/Minio_Logo_White.png?raw=1\" style=\"height: 55px;\"></img>\n<img src=\"https://www.dropbox.com/s/59wm2aemin3cvsc/Minio_wm_light_32px.png?raw=1\" style=\"height: 40px;\"></img>\n<p style=\"margin-top: 10px;\"><small>\nMinio is a high performance distributed object storage server, designed for \nlarge-scale private cloud infrastructure. For more information, check out the <a href=\"https://docs.minio.io\">docs</a>.\n</small></p>",
+      "datasource": null,
       "description": "Minio is a high performance distributed object storage server, designed for large-scale private cloud infrastructure. For more information, check out the docs.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 5,
         "w": 8,
@@ -74,6 +38,11 @@
       "id": 8,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<img src=\"https://www.dropbox.com/s/s5z6rn7offp7ov3/Minio_Logo_White.png?raw=1\" style=\"height: 55px;\"></img>\n<img src=\"https://www.dropbox.com/s/59wm2aemin3cvsc/Minio_wm_light_32px.png?raw=1\" style=\"height: 40px;\"></img>\n<p style=\"margin-top: 10px;\"><small>\nMinio is a high performance distributed object storage server, designed for \nlarge-scale private cloud infrastructure. For more information, check out the <a href=\"https://docs.minio.io\">docs</a>.\n</small></p>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -87,7 +56,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -136,7 +111,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "",
+      "tableColumn": "{instance=\"minio-server.service.minio.internal:9000\"}",
       "targets": [
         {
           "expr": "sum(minio_disks_total{instance=~\"$instance\"}) by(instance)",
@@ -167,7 +142,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -226,7 +207,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "",
+      "tableColumn": "{instance=\"minio-server.service.minio.internal:9000\"}",
       "targets": [
         {
           "expr": "sum(minio_disks_offline{instance=~\"$instance\"}) by(instance)/sum(minio_disks_total{instance=~\"$instance\"}) by(instance)*100",
@@ -253,16 +234,24 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": null,
       "description": "Data sent by current Minio server instance",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 4,
       "legend": {
         "avg": false,
@@ -278,6 +267,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -298,6 +288,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Data Transmited",
       "tooltip": {
@@ -341,16 +332,24 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": null,
       "description": "Data received by current Minio server instance",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 5,
       "legend": {
         "avg": false,
@@ -366,6 +365,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -386,6 +386,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Data Received",
       "tooltip": {
@@ -429,9 +430,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "description": "Data received x transmited by current Minio server instance",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
@@ -439,6 +447,7 @@
         "y": 5
       },
       "height": "",
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "avg": false,
@@ -454,6 +463,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -482,6 +492,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Total In/Out Throughput",
       "tooltip": {
@@ -525,15 +536,23 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "description": "The current aggregate time spent servicing all HTTP requests  in seconds",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
         "y": 12
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "avg": false,
@@ -549,6 +568,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -587,6 +607,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "HTTP Requests duration/s",
       "tooltip": {
@@ -630,14 +651,131 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": null,
+      "description": "Storage of connected disks",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 12,
         "x": 12,
         "y": 12
       },
+      "hiddenSeries": false,
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "disk_storage_total",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "storage total",
+          "refId": "A"
+        },
+        {
+          "expr": "disk_storage_available",
+          "interval": "",
+          "legendFormat": "storage available",
+          "refId": "B"
+        },
+        {
+          "expr": "disk_storage_used",
+          "interval": "",
+          "legendFormat": "storage used",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk storage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:204",
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:205",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 20
+      },
+      "hiddenSeries": false,
       "id": 10,
       "legend": {
         "avg": false,
@@ -653,6 +791,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -678,6 +817,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Disks",
       "tooltip": {
@@ -718,7 +858,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 16,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "minio"
@@ -727,8 +867,13 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "selected": false,
+          "text": "minio-server.service.minio.internal:9000",
+          "value": "minio-server.service.minio.internal:9000"
+        },
+        "datasource": "prometheus",
+        "definition": "",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -738,6 +883,7 @@
         "query": "label_values(minio_disks_total,instance)",
         "refresh": 1,
         "regex": "",
+        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
@@ -779,5 +925,5 @@
   "timezone": "",
   "title": "Minio: dashboard",
   "uid": "minio_dashboard",
-  "version": 4
+  "version": 8
 }
