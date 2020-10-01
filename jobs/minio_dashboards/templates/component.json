@@ -1,34 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.2.4"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -45,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1542803103035,
+  "iteration": 1601568642908,
   "links": [
     {
       "asDropdown": true,
@@ -67,17 +36,25 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "description": "Instantaneous number of active goroutines in the process.",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 12,
         "x": 0,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 9,
       "legend": {
         "avg": false,
@@ -93,6 +70,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -102,8 +80,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(go_goroutines{instance=~\"$host\"}) by(instance)",
+          "expr": "avg(go_goroutines{job=~\"minio\"}) by(instance)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "minio",
           "refId": "A",
@@ -112,6 +91,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Go Routines",
       "tooltip": {
@@ -131,6 +111,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:117",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -139,6 +120,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:118",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -157,17 +139,25 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "description": "Duration in nanoseconds of the last garbage collector pause.",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 12,
         "x": 12,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "avg": false,
@@ -183,6 +173,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -192,8 +183,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(go_gc_duration_seconds{instance=~\"$host\"}) by(instance)",
+          "expr": "avg(go_gc_duration_seconds{job=~\"minio\"}) by(instance)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "minio",
           "refId": "A",
@@ -202,6 +194,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Garbage Collector Pause Duration",
       "tooltip": {
@@ -221,6 +214,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:187",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -229,6 +223,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:188",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -247,15 +242,23 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "description": "Instantaneous count of bytes allocated on the heap and still in use.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 12,
         "x": 0,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 1,
       "legend": {
         "avg": false,
@@ -271,6 +274,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -280,8 +284,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(go_memstats_heap_alloc_bytes{instance=~\"$host\"}) by(instance)",
+          "expr": "avg(go_memstats_heap_alloc_bytes{job=~\"minio\"}) by(instance)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "minio",
           "metric": "",
@@ -291,6 +296,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Heap Memory Usage",
       "tooltip": {
@@ -310,6 +316,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:257",
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -318,6 +325,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:258",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -336,17 +344,25 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "description": "Instantaneous count of bytes used by the stack allocator.",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 12,
         "x": 12,
         "y": 5
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "avg": false,
@@ -362,6 +378,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -371,7 +388,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(go_memstats_stack_sys_bytes{instance=~\"$host\"}) by(instance)",
+          "expr": "avg(go_memstats_stack_sys_bytes{job=~\"minio\"}) by(instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -383,6 +400,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Stack Allocator Memory Usage",
       "tooltip": {
@@ -402,6 +420,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:327",
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -410,6 +429,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:328",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -425,7 +445,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 16,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "minio"
@@ -434,8 +454,14 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "isNone": true,
+          "selected": true,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": "prometheus",
+        "definition": "",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -445,6 +471,7 @@
         "query": "label_values(minio_total_disks,instance)",
         "refresh": 1,
         "regex": "",
+        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
